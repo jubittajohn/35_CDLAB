@@ -1,0 +1,9 @@
+void main()
+{
+	int num1=5;
+	int num2=6;
+	if(num1>=num2)
+	   num1=1;
+	if(num2<num1)
+	   num2=2;
+}
