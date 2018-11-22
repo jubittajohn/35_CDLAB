@@ -113,5 +113,5 @@ void main()
 	}
 	end();
 	display();
-	printf("\n");
+	printf("\n\n");
 }
