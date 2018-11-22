@@ -8,10 +8,12 @@ int priority(char ch)
 {
 	if(ch=='=')
 		return 0;
-	if(ch=='+'||ch=='-')
+	if(ch=='(')
 		return 1;
-	if(ch=='*'||ch=='/')
+	if(ch=='+'||ch=='-')
 		return 2;
+	if(ch=='*'||ch=='/')
+		return 3;
 }
 void numprint(char ch)
 {
@@ -24,14 +26,29 @@ void operator1()
 {
 	if(opp==-1)
 		op[++opp]=input[i];
+	else if(input[i]=='(')
+		op[++opp]=input[i];
+	else if(input[i]==')')
+	{
+		while(op[opp]!='(')
+		{
+			table[rownum][0]=op[opp--];
+                	table[rownum][2]=alpha[alphap--];
+                	table[rownum][1]=alpha[alphap--];
+
+                	table[rownum][3]=(char)((tcount++)+48);
+                	alpha[++alphap]=table[rownum][3];
+                	rownum++;
+		}
+		op[opp--];
+	}
 	else if(priority(input[i])>priority(op[opp]))
 		op[++opp]=input[i];
 	else
 	{
 		table[rownum][0]=op[opp--];
 		table[rownum][2]=alpha[alphap--];
-		table[rownum][1]=alpha[alphap--];
-		
+		table[rownum][1]=alpha[alphap--];		
 		table[rownum][3]=(char)((tcount++)+48);
 		alpha[++alphap]=table[rownum][3];
 		rownum++;
@@ -98,4 +115,3 @@ void main()
 	display();
 	printf("\n");
 }
-
