@@ -70,7 +70,7 @@ void constant()
 				case '*':
 					res=op1*op2;break;
 				case '/':
-					res=op1*op2;break;
+					res=op1/op2;break;
 				case '=':
 					res=op1;break;
 			}
